@@ -1,0 +1,13 @@
+.login__form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 30px 25px;
+    gap: 25px;
+    input, button{
+        width: 250px;
+    height: 35px;
+    }
+}

@@ -1,0 +1,41 @@
+$main-color-dark: #002E34;
+
+.aboutWrapper{
+    min-height: 300px;
+    background: rgb(203,247,238);
+}
+
+.aboutInner{
+     position: relative;
+     padding-top: 50px;
+}
+
+.footerLogo{
+    background: transparent;
+    height: 200px;
+}
+
+.footerLogoText{
+    position: absolute;
+    top: 70px;
+    left: 30px;
+    font-weight: 900;
+    color: gold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.aboutComponent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding-bottom: 30px;
+}
+
+.aboutDescription{
+    color: $main-color-dark;
+    font-weight: 600;
+    max-width: 500px;
+    text-align: center;
+}

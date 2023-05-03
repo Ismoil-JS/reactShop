@@ -1,0 +1,141 @@
+$main-color-dark: #002E34;
+
+.navbar {
+  width: 100%;
+  height: 100%;
+  max-height: 80px;
+  background-color: $main-color-dark;
+  color: #fff;
+}
+
+.navbar__wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 4;
+}
+
+.navbar__logo__wrapper {
+  flex: 1;
+}
+
+.navbar__logo__wrapper>img {
+  max-height: 80px;
+}
+
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  gap: 0 40px;
+}
+
+.navbar__language__list {
+  display: flex;
+  gap: 0 5px;
+
+  li {
+    text-transform: uppercase;
+  }
+
+  span {
+    &:last-child {
+      display: none;
+    }
+  }
+}
+
+.mobile__menu__icon {
+  font-size: 30px;
+  display: none;
+}
+
+.mobile__menu {
+  display: none;
+  height: 100%;
+  background-color: #002E34;
+  width: 80vw;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  z-index: 5;
+  transition: all .3s ease-in;
+}
+
+.active__menu {
+  left: 0;
+}
+
+.navbar__menu__mobile {
+  display: none;
+}
+
+
+.mobile__filter {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  backdrop-filter: blur(100px);
+  background-color: rgba(94, 94, 94, 0.594);
+}
+@media screen and (max-width: 992px) {
+  .navbar__menu {
+    gap: 0 20px;
+  }
+
+  .navbar__menu__mobile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  
+  .navbar__menu {
+    display: none;
+  }
+
+  .active__menu {
+    background-color: #002E34 !important;
+    
+  }
+
+  .mobile__menu {
+    display: block;
+  }
+
+  .navbar__menu__mobile {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px 0;
+    margin-top: 50px;
+  }
+
+  .navbar__menu__mobile>.navbar__language__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0;
+
+    li {
+      border-bottom: 1px solid transparent;
+    }
+
+    li:hover {
+      border-bottom: 1px solid red;
+    }
+  }
+
+  .navbar__wrapper>a {
+    display: none;
+  }
+
+  .mobile__menu__icon {
+    display: block;
+  }
+}

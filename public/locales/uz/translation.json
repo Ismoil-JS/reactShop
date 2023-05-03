@@ -1,0 +1,14 @@
+{
+  "message" : "Xabarlar",
+  "account" : "Ro'yhatdan o'tish",
+  "mainPage" : "Bosh Toifalar",
+  "name" : "Ismingiz",
+  "email" : "Emailingiz",
+  "password" : "Parolingiz",
+  "avatar" : "Avataringiz",
+  "ennounce" : "E'lon berish",
+  "search" : "Mahsulotlarni qidirish",
+  "login" : "Tizimga kirish",
+  "register" : "Roʻyxatdan oʻtish"
+
+}
