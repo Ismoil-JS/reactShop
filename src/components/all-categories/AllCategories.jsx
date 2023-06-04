@@ -3,17 +3,20 @@ import c from "./AllCategories.module.scss";
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import instance from "../../api/axios";
+import axios from "axios";
 
 
 
 const AllCategories = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const [categoriesData, setCategoriesData] = useState([]);
+
   useEffect(() => {
-    instance("/category/category-nest")
-    .then(response => setCategoriesData(response.data))
-    .catch(err => console.error(err))
+    axios.get("https://api.escuelajs.co/api/v1/categories")
+      .then(response => {
+        setCategoriesData(response.data)
+      })
+      .catch(err => console.error(err))
   }, [])
 
   const imagesForCategories = [
@@ -36,17 +39,17 @@ const AllCategories = () => {
       <h3>{t("mainPage")}</h3>
       <div className={c.allcategories__container}>
         {
-          categoriesData.mainCategory_uz ?
-          categoriesData.mainCategory_uz.map((category, i) => 
-            <Link className={c.category__item}>
-             <div className={c.category__item__image}>
-              <img src={imagesForCategories[i]} alt="" />
-             </div>
-            <p> {category}</p>
-            </Link>  
-          )
-          :
-          <p>Loading...</p>
+          categoriesData ?
+            categoriesData.map((category, i) =>
+              <Link className={c.category__item}>
+                <div className={c.category__item__image}>
+                  <img src={imagesForCategories[i]} alt="" />
+                </div>
+                <p> {categoriesData.name}</p>
+              </Link>
+            )
+            :
+            <p>Loading...</p>
         }
       </div>
     </section>

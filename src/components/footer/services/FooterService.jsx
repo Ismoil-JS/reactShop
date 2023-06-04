@@ -6,7 +6,6 @@ const FooterService = () => {
   return (
     <div className={c.serviceInner}>
       <Container>
-        
       </Container>
     </div>
   )

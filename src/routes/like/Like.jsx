@@ -14,23 +14,23 @@ const Like = () => {
   }
 
   const dislikeProduct = (id) => {
-    dispatch({id, type: "DISLIKE_PRODUCT"})
+    dispatch({ id, type: "DISLIKE_PRODUCT" })
   }
 
-  const productPrices = storeData.likedProducts.map(i => +i.productSizesAndQuantity[0].price);
+  const productPrices = storeData.likedProducts.map(i => +i?.price);
   const total = productPrices.reduce((a, b) => a + b, 0)
-  
+
   return (
     <div>
-      {
-        storeData.likedProducts.map(product=>
-          <div style={{position: "relative"}}> 
-            {storeData.likedProducts.find(i => i?._id === product?._id) ? <BsHeartFill onClick={() => dislikeProduct(product?._id)} className="product__like fill-hearticon"/> : <BsHeart className="product__like" onClick={() => likeProduct(product)}/>}
-            <img src={product?.productImages[0]} alt="" />
-            <h3>{product?.productName_uz}</h3>
-          </div>  
+      {storeData?.likedProducts ?
+        storeData?.likedProducts?.map(product =>
+          <div style={{ position: "relative" }}>
+            {storeData?.likedProducts?.find(i => i?.id === product?.id) ? <BsHeartFill onClick={() => dislikeProduct(product?.id)} className="product__like fill-hearticon" /> : <BsHeart className="product__like" onClick={() => likeProduct(product)} />}
+            <img src={product?.images[0]} alt="" />
+            <h3>{product?.name}</h3>
+          </div>
         )
-      }
+        : <h3>Like something</h3>}
       <h3>{total}UZS</h3>
     </div>
   )

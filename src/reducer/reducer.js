@@ -5,7 +5,7 @@ const initialState = {
 
 const likeReducer = (state = initialState, action) => {
   console.log(action);
-  switch(action.type){
+  switch (action.type) {
     case "LIKE_PRODUCT":
       return {
         likedProducts: [...state.likedProducts, action.product]
@@ -13,8 +13,8 @@ const likeReducer = (state = initialState, action) => {
 
     case "DISLIKE_PRODUCT":
       const id = action.id;
-      const indexOfDislikedProduct = state.likedProducts.findIndex(product => product?._id === id);
-      if(indexOfDislikedProduct >= 0){
+      const indexOfDislikedProduct = state.likedProducts.findIndex(product => product?.id === id);
+      if (indexOfDislikedProduct >= 0) {
         state.likedProducts.splice(indexOfDislikedProduct, 1);
       }
       return {

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { FiSearch } from "react-icons/fi";
 import { Link } from 'react-router-dom';
 import c from "./Search.module.scss";
-import instance from "../../api/axios";
+import axios from 'axios';
 
 const Search = () => {
   const [inputText, setInputText] = useState("")
@@ -12,7 +12,7 @@ const Search = () => {
   const searchProduct = (e) => {
     setInputText(e.target.value);
     e.preventDefault()
-    instance(`/product/search/${e.target.value}`)
+    axios.get(`https://api.escuelajs.co/api/v1/products/?title=${e.target.value}`)
       .then(response => {
         if (response.data.length > 0) {
           setSearchData(response.data)
@@ -39,7 +39,9 @@ const Search = () => {
         </div>
         {
           searchData?.length > 0 ?
-            <div className={c.search__results}>
+            <div className={inputText === "" ?
+              c.nothing :
+              c.search__results} >
               <div className={c.result__nav}>
                 <h3>Қидириш натижалари: <span className={c.input__txt}>#{inputText}</span></h3>
                 <div>
@@ -49,18 +51,18 @@ const Search = () => {
                   <span onClick={() => {
                     setInputText("")
                     setSearchData([])
-                    }} style={{ color: 'dodgerblue' }}>Бекор қилиш</span>
+                  }} style={{ color: 'dodgerblue' }}>Бекор қилиш</span>
                 </div>
               </div>
+
               <div>
-                {
+                {inputText === "" ? <></> :
                   searchData.map(product =>
                     <div className={c.product__card__wrapper}>
-                      <Link className={c.product__img} to={`/product/${product._id}`}>
-                        <img src={product.productImages[0]} alt="Product" />
-                        <span>{product.productName_uz}</span>
+                      <Link className={c.product__img} to={`/product/${product.id}`}>
+                        <img src={product.images[0]} alt="Product" />
+                        <span>{product.title}</span>
                       </Link>
-                      <strong>{product.productSizesAndQuantity[0].price} CУМ - {product.productSizesAndQuantity[product.productSizesAndQuantity.length - 1].price} CУМ</strong>
                     </div>
                   )
                 }

@@ -1,16 +1,18 @@
 $main-color-dark: #002E34;
-.search__heading{
+
+.search__heading {
   margin-top: 50px;
   background-color: #fff;
   text-align: center;
   padding-top: 50px;
-  h2{
+
+  h2 {
     font-size: 30px;
     font-weight: 500;
   }
 }
 
-.main__search{
+.main__search {
   background-color: #fff;
   min-height: 100px;
   margin-bottom: 50px;
@@ -20,7 +22,7 @@ $main-color-dark: #002E34;
   position: relative;
 }
 
-.search__wrapper{
+.search__wrapper {
   display: flex;
   width: 100%;
   gap: 0 20px;
@@ -29,39 +31,42 @@ $main-color-dark: #002E34;
   align-items: center;
   border: 2px solid $main-color-dark;
   padding-left: 20px;
-  svg{
+  overflow: hidden;
+
+  svg {
     font-size: 30px;
   }
 }
 
-.search__wrapper form{
+.search__wrapper form {
   display: flex;
   width: 100%;
   gap: 0 20px;
   height: 40px;
 }
 
-.search__input{
+.search__input {
   flex: 1;
   border: none;
   font-size: 20px;
   outline: none;
 }
 
-.search__wrapper form button{
+.search__wrapper form button {
   background-color: $main-color-dark;
   color: #fff;
   border: none;
   padding-inline: 30px;
   font-size: 20px;
   cursor: pointer;
-  &:hover{
+
+  &:hover {
     opacity: .8;
     transition: 0.3s ease-in-out;
   }
 }
 
-.search__results{
+.search__results {
   position: absolute;
   top: 100px;
   background-color: #fff;
@@ -75,35 +80,42 @@ $main-color-dark: #002E34;
   padding: 10px;
   box-sizing: border-box;
 }
-.product__img{
+
+.product__img {
   display: flex;
   align-items: center;
   gap: 20px;
-  span{
+
+  span {
     color: #002E34;
   }
-  img{
+
+  img {
     border: 1px solid $main-color-dark;
     height: 60px;
     width: 60px;
-  } 
+  }
 }
-.result__nav{
+
+.result__nav {
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  div{
+
+  div {
     display: flex;
     gap: 40px;
   }
 }
-.input__txt{
+
+.input__txt {
   background-color: #dddddd;
   padding: 8px;
   border-radius: 5px;
   font-weight: 300;
 }
-.product__card__wrapper{
+
+.product__card__wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -112,7 +124,12 @@ $main-color-dark: #002E34;
   border: 1px solid $main-color-dark;
   margin: 10px 0;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  strong{
+
+  strong {
     color: #5bb85b;
   }
+}
+
+.nothing {
+  display: none;
 }
