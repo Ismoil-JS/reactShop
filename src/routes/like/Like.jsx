@@ -1,37 +1,39 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from "react-redux";
-import { BsHeart, BsHeartFill } from "react-icons/bs";
-
+import c from "./Like.module.scss";
 
 const Like = () => {
   const dispatch = useDispatch();
   const storeData = useSelector(state => state);
-  console.log(storeData);
-  const likeProduct = (product) => {
-    // dispatch
-    dispatch({ product, type: "LIKE_PRODUCT" })
-  }
 
   const dislikeProduct = (id) => {
     dispatch({ id, type: "DISLIKE_PRODUCT" })
   }
 
-  const productPrices = storeData.likedProducts.map(i => +i?.price);
+  const productPrices = storeData.likedProducts.map(i => Number(i.price));
   const total = productPrices.reduce((a, b) => a + b, 0)
-
+  console.log(storeData.likedProducts);
   return (
     <div>
-      {storeData?.likedProducts ?
+      <h2>Sum of prize: $ {total}</h2>
+      {
         storeData?.likedProducts?.map(product =>
-          <div style={{ position: "relative" }}>
-            {storeData?.likedProducts?.find(i => i?.id === product?.id) ? <BsHeartFill onClick={() => dislikeProduct(product?.id)} className="product__like fill-hearticon" /> : <BsHeart className="product__like" onClick={() => likeProduct(product)} />}
-            <img src={product?.images[0]} alt="" />
-            <h3>{product?.name}</h3>
+          <div className={c.singleProduct}>
+            <div>
+              <img className={c.mainImage} src={product?.images[0]} alt="" />
+            </div>
+            <div className={c.singleProductInfo}>
+              <h3> Category:  {product?.category.name}</h3>
+              <h2>Name: {product?.title}</h2>
+              <strong>Price: ${product?.price}</strong>
+              <p> <b>Description: </b>   {product?.description}</p>
+              <button onClick={() => dislikeProduct(product.id)} style={{ width: "155px", height: "45px", background: "blue", border: "none", borderRadius: "25px", color: "white" }}> Remove from Card</button>
+            </div>
           </div>
+
         )
-        : <h3>Like something</h3>}
-      <h3>{total}UZS</h3>
+      }
     </div>
   )
 }
