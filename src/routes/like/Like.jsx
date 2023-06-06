@@ -7,7 +7,7 @@ const Like = () => {
   const dispatch = useDispatch();
   const storeData = useSelector(state => state);
 
-  const dislikeProduct = (id) => {
+  const removeFromCard = (id) => {
     dispatch({ id, type: "DISLIKE_PRODUCT" })
   }
 
@@ -16,7 +16,7 @@ const Like = () => {
   console.log(storeData.likedProducts);
   return (
     <div>
-      <h2>Sum of prize: $ {total}</h2>
+      <h2 style={{ padding: "25px" }}>Sum of prize: $ {total}</h2>
       {
         storeData?.likedProducts?.map(product =>
           <div className={c.singleProduct}>
@@ -28,10 +28,9 @@ const Like = () => {
               <h2>Name: {product?.title}</h2>
               <strong>Price: ${product?.price}</strong>
               <p> <b>Description: </b>   {product?.description}</p>
-              <button onClick={() => dislikeProduct(product.id)} style={{ width: "155px", height: "45px", background: "blue", border: "none", borderRadius: "25px", color: "white" }}> Remove from Card</button>
+              <button onClick={() => removeFromCard(product.id)} style={{ width: "155px", height: "45px", background: "blue", border: "none", borderRadius: "25px", color: "white" }}> Remove from Card</button>
             </div>
           </div>
-
         )
       }
     </div>

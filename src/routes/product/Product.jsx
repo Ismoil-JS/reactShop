@@ -41,15 +41,14 @@ const Product = () => {
   }
 
   const addToCardProduct = (product) => {
-    dispatch({ product, type: "Carded" })
+    dispatch({ product, type: "LIKE_PRODUCT" })
   }
   const removeCardProduct = (id) => {
-    dispatch({ id, type: "unCarded" })
+    dispatch({ id, type: "DISLIKE_PRODUCT" })
   }
 
   return (
     <div>
-      <h3><Link to="/" style={{ textDecoration: "none" }}>Main Page</Link> &#62; <Link to="/category" style={{ textDecoration: "none" }}>Category Page</Link></h3>
       <div className={c.singleProduct}>
         <div>
           <img className={c.mainImage} src={productInfo?.images[activeImageIndex]} alt="" />
@@ -77,16 +76,17 @@ const Product = () => {
             <i className="fas fa-plus" onClick={increasement} ></i>
           </div>
           <h2 className={c.calculateCounterSum}>All price: $ {counter * productInfo?.price}</h2>
-          {data.cardedProducts?.find(i => i.id === productInfo?.id) ? <button onClick={() => removeCardProduct(productInfo?.id)} style={{ width: "155px", height: "45px", background: "blue", border: "none", borderRadius: "25px", color: "white" }}> Remove from Card</button> :
+          {data.likedProducts?.find(i => i.id === productInfo?.id) ? <button onClick={() => removeCardProduct(productInfo?.id)} style={{ width: "155px", height: "45px", background: "blue", border: "none", borderRadius: "25px", color: "white" }}> Remove from Card</button> :
             <button onClick={() => addToCardProduct(productInfo)} style={{ width: "155px", height: "45px", background: "blue", border: "none", borderRadius: "25px", color: "white" }}> Add to Card</button>}
 
         </div>
       </div>
 
+      <h3 style={{ padding: "25px" }}>You can see other products here!</h3>
       <div className={c.products}>
         {product?.map(a =>
           <Link to={`/product/${a.id}`} style={{ textDecoration: "none" }}> <div className={c.productCard}>
-            <img src={a.images[0]} alt='productImages' />
+            <img src={a.images[0]} />
             <h3>${a.price}</h3>
           </div></Link>
         )}

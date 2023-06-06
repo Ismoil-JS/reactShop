@@ -45,7 +45,7 @@ const AllCategories = () => {
                 <div className={c.category__item__image}>
                   <img src={imagesForCategories[i]} alt="" />
                 </div>
-                <p> {categoriesData.name}</p>
+                <p> {category.name}</p>
               </Link>
             )
             :

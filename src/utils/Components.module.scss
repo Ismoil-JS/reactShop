@@ -12,6 +12,7 @@ $main-color-dark: #002e34;
   align-items: center;
   font-size: 20px;
   gap: 0 10px;
+
   svg {
     font-size: 25px;
   }
@@ -43,6 +44,7 @@ $main-color-dark: #002e34;
   border-radius: 5px;
   border: 5px solid transparent;
   transition: 0.5s;
+
   &:hover {
     border: 5px solid #002e34;
     background-color: #fff;
@@ -78,9 +80,10 @@ $main-color-dark: #002e34;
   width: 100%;
   text-align: center;
   margin-top: 10px;
+  z-index: 9999;
 }
 
-.cardBtn__choose > svg {
+.cardBtn__choose>svg {
   font-size: 23px;
   margin-bottom: 3px;
   margin-right: 10px;

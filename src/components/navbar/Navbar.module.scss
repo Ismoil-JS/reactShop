@@ -71,6 +71,14 @@ $main-color-dark: #002E34;
   display: none;
 }
 
+.mob__menu__items {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 15px;
+  color: #fff;
+}
+
 
 .mobile__filter {
   display: block;
@@ -81,6 +89,7 @@ $main-color-dark: #002E34;
   backdrop-filter: blur(100px);
   background-color: rgba(94, 94, 94, 0.594);
 }
+
 @media screen and (max-width: 992px) {
   .navbar__menu {
     gap: 0 20px;
@@ -93,14 +102,14 @@ $main-color-dark: #002E34;
 
 @media screen and (max-width: 768px) {
 
-  
+
   .navbar__menu {
     display: none;
   }
 
   .active__menu {
     background-color: #002E34 !important;
-    
+
   }
 
   .mobile__menu {

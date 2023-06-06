@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { CardBtnLink } from "../../utils/Components";
-import { BsCart, BsHeart, BsHeartFill } from "react-icons/bs";
+import { BsCart } from "react-icons/bs";
+import { FaShoppingCart } from "react-icons/fa";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -28,12 +29,12 @@ const AllProductsHome = () => {
   }, [])
 
 
-  const likeProduct = (product) => {
+  const addToCardProduct = (product) => {
     // dispatch
     dispatch({ product, type: "LIKE_PRODUCT" })
   }
 
-  const dislikeProduct = (id) => {
+  const removeCardProduct = (id) => {
     dispatch({ id, type: "DISLIKE_PRODUCT" })
   }
 
@@ -61,7 +62,7 @@ const AllProductsHome = () => {
 
             allProductsData.map((product) => (
               <SwiperSlide key={product.id}>
-                {storeData.likedProducts.find(i => i?.id === product?.id) ? <BsHeartFill onClick={() => dislikeProduct(product?.id)} className="product__like fill-hearticon" /> : <BsHeart className="product__like" onClick={() => likeProduct(product)} />}
+                {storeData.likedProducts.find(i => i?.id === product?.id) ? <FaShoppingCart onClick={() => removeCardProduct(product?.id)} className="product__like fill-shopicon" /> : <BsCart className="product__like" onClick={() => addToCardProduct(product)} />}
                 <Link
                   className="productLink"
                   to={`/product/${product.id}`}
@@ -74,15 +75,23 @@ const AllProductsHome = () => {
                     </span>
                     <div>
                       <strong>
-                        {product.price + " $"
-                        }
+                        {product.price + " $"}
                       </strong>
-                      {<CardBtnLink
+                      {storeData.likedProducts.find(i => i?.id === product?.id) ? <div onClick={() => removeCardProduct(product?.id)}> <CardBtnLink
+                        onClick={() => removeCardProduct(product?.id)}
                         icon={<BsCart />}
-                        text="Savatga qo'shish"
-                        link="/"
-                      />
-                      }
+                        text="Savatdan olib tashlash"
+                      /></div> :
+                        <div onClick={() => addToCardProduct(product)}>
+
+
+                          <CardBtnLink
+
+                            icon={<BsCart />}
+                            text="Savatga qo'shish"
+                          />
+                        </div>}
+
                     </div>
                   </div>
                 </Link>

@@ -26,9 +26,9 @@ const MainLink = ({ text, link, type }) => {
   );
 };
 
-const CardBtnLink = ({ text, link, icon }) => {
+const CardBtnLink = ({ text, icon }) => {
   return (
-    <Link to={link} className={c.cardBtn__choose}>
+    <Link className={c.cardBtn__choose}>
       {icon}
       {text}
     </Link>

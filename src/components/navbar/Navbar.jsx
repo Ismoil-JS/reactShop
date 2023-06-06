@@ -4,7 +4,8 @@ import { Container, MainLink } from "../../utils/Components";
 import c from "./Navbar.module.scss";
 import { UniversalLink } from "../../utils/Components";
 import { FiMessageCircle, FiHeart, FiUser, FiMenu } from "react-icons/fi";
-import { useLocation } from "react-router-dom";
+import { BsCart } from "react-icons/bs";
+import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import i18n from "../../language/i18next";
 import { useDispatch } from "react-redux";
@@ -26,7 +27,7 @@ const Navbar = () => {
     <></>
   ) : (
     <nav className={c.navbar}>
-      <div className={isMenuOpen ? c.mobile__filter : ""} style={isMenuOpen ? { zIndex: "3" } : { zIndex: "0" } } onClick={()=>{setIsMenuOpen(false)}}></div>
+      <div className={isMenuOpen ? c.mobile__filter : ""} style={isMenuOpen ? { zIndex: "3" } : { zIndex: "0" }} onClick={() => { setIsMenuOpen(false) }}></div>
       <Container>
         <div className={c.navbar__wrapper}>
           <div className={c.navbar__logo__wrapper}>
@@ -39,7 +40,7 @@ const Navbar = () => {
                   <li
                     onClick={() => {
                       i18n.changeLanguage(l);
-                      dispatch({langCode: l, type: "CHANGE_LANG"})
+                      dispatch({ langCode: l, type: "CHANGE_LANG" })
                     }}
                   >
                     {l}
@@ -49,9 +50,9 @@ const Navbar = () => {
               ))}
             </ul>
 
-            <UniversalLink text={t("message")} link="/" icon={<FiMessageCircle/>}/>
-            <UniversalLink text="" link="/like" icon={<FiHeart/>}/>
-            <UniversalLink text={t("account")} link="/auth/login" icon={<FiUser/>}/>
+            <UniversalLink text={t("message")} link="/" icon={<FiMessageCircle />} />
+            <UniversalLink text="" link="/like" icon={<BsCart />} />
+            <UniversalLink text={t("account")} link="/auth/login" icon={<FiUser />} />
           </div>
           <MainLink text={t("ennounce")} link="/" type="light" />
           <FiMenu className={c.mobile__menu__icon} onClick={menuToggle} />
@@ -72,9 +73,9 @@ const Navbar = () => {
               </>
             ))}
           </ul>
-          <UniversalLink text={t("message")} link="/" icon={<FiMessageCircle />} />
-          <UniversalLink text="" link="/" icon={<FiHeart />} />
-          <UniversalLink text={t("account")} link="/auth/login" icon={<FiUser />} />
+          <Link className={c.mob__menu__items}><FiMessageCircle /><h3>{t("message")}</h3></Link>
+          <Link className={c.mob__menu__items} to="/like"><BsCart /> <h3>{t("card")} </h3></Link>
+          <Link className={c.mob__menu__items} to="/auth/login"><FiUser /> <h3>{t("account")}</h3></Link>
         </div>
       </div>
     </nav>
