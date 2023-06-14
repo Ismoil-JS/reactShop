@@ -77,7 +77,7 @@ const AllProductsHome = () => {
                       <strong>
                         {product.price + " $"}
                       </strong>
-                      {storeData.likedProducts.find(i => i?.id === product?.id) ? <div onClick={() => removeCardProduct(product?.id)}> <CardBtnLink
+                      {storeData.likedProducts.find(i => i?.id === product?.id) ? <div onClick={() => removeCardProduct(product?.id)} > <CardBtnLink
                         onClick={() => removeCardProduct(product?.id)}
                         icon={<BsCart />}
                         text="Savatdan olib tashlash"

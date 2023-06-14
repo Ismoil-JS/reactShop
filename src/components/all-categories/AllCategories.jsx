@@ -33,24 +33,24 @@ const AllCategories = () => {
     "https://categories.olxcdn.com/assets/categories/olxuz/otdam-darom-1151-2x.png",
     "https://categories.olxcdn.com/assets/categories/olxuz/obmen-barter-1153-2x.png"
   ]
-
+  console.log(categoriesData);
   return (
     <section className={c.allcategories}>
       <h3>{t("mainPage")}</h3>
       <div className={c.allcategories__container}>
         {
-          categoriesData ?
-            categoriesData.map((category, i) =>
-              <Link className={c.category__item}>
+          categoriesData
+            ? categoriesData.slice(0, 12).map((category, i) => (
+              <Link className={c.category__item} key={i}>
                 <div className={c.category__item__image}>
                   <img src={imagesForCategories[i]} alt="" />
                 </div>
-                <p> {category.name}</p>
+                <p>{category.name}</p>
               </Link>
-            )
-            :
-            <p>Loading...</p>
+            ))
+            : <p>Loading...</p>
         }
+
       </div>
     </section>
   )
